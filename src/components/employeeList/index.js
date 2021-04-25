@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ListHeader from '../listHeader'
+import ListHeader from '../listHeader';
+import Employee from '../employee';
 
 class EmployeeList extends Component {
     state = {
@@ -22,7 +23,7 @@ class EmployeeList extends Component {
         return(
             <div>
                 <ListHeader nameSort={this.state.nameSort} nameSortHandler={this.nameSortHandler}/>
-                <h1>EMPLOYEES</h1>
+                <Employee/>
             </div>
         );
     }
