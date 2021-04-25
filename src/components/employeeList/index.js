@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ListHeader from '../listHeader';
 import Employee from '../employee';
+import { isThisTypeNode } from 'typescript';
 
 class EmployeeList extends Component {
     state = {
@@ -23,7 +24,9 @@ class EmployeeList extends Component {
         return(
             <div>
                 <ListHeader nameSort={this.state.nameSort} nameSortHandler={this.nameSortHandler}/>
-                <Employee/>
+                {this.props.employees.map((employee, i) => (
+                    <Employee key={i} index={i} data={employee}/>
+                ))}
             </div>
         );
     }

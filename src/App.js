@@ -38,7 +38,7 @@ class App extends Component {
           search={this.state.search}
           clearInput={this.clearInput}  
         />
-        <EmployeeList/>
+        <EmployeeList employees={this.state.employees}/>
       </div>
     )
   }
