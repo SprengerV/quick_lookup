@@ -6,11 +6,11 @@ function listHeader(props) {
     switch (props.nameSort) {
         case ('asc'):
             nameDiv = "dropup";
-            nameBtn = "btn-outline-danger dropdown-toggle"
+            nameBtn = "btn-outline-info dropdown-toggle"
             break;
         case ('desc'):
             nameDiv = "dropdown";
-            nameBtn = "btn-outline-danger dropdown-toggle"
+            nameBtn = "btn-outline-info dropdown-toggle"
             break;
         default:
             nameDiv = "";
