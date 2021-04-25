@@ -12,10 +12,12 @@ class App extends Component {
 
   inputHandler = event => {
     this.setState({ search: event.target.value });
-    console.log(this.state.search)
+  }
+  clearInput = event => {
+    this.setState({ search: "" });
   }
   filterResults = search => {
-    
+
   }
 
   render() {
@@ -24,7 +26,8 @@ class App extends Component {
         <Navbar />
         <Search
           inputHandler={this.inputHandler}
-          search={this.state.search}  
+          search={this.state.search}
+          clearInput={this.clearInput}  
         />
         {/* <EmployeeList /> */}
       </div>

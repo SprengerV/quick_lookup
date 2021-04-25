@@ -3,7 +3,10 @@ import './search.css';
 
 function Search(props) {
     return (
-        <form className="row d-flex justify-content-center">
+        <form 
+            className="row d-flex justify-content-center"
+            onSubmit={event => event.preventDefault()}    
+        >
             <input 
                 className="search-query col-md-4" 
                 type="text" 
@@ -13,8 +16,9 @@ function Search(props) {
             />
             <button
                 className="btn btn-outline"
-                type="submit"
-            >Submit</button>
+                type="button"
+                onClick={props.clearInput}
+            >Clear</button>
         </form>
     )
 }
