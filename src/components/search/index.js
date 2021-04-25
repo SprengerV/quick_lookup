@@ -8,7 +8,8 @@ function Search(props) {
                 className="search-query col-md-4" 
                 type="text" 
                 placeholder="Search" 
-                value={props.inputHandler}
+                onChange={props.inputHandler}
+                value={props.search}
             />
             <button
                 className="btn btn-outline"
