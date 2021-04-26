@@ -15,18 +15,28 @@ class App extends Component {
   componentDidMount() {
     getEmployees()
       .then(res => {
-        this.setState({ employees: res.data.results })
+        const emps = res.data.results;
+        this.setState({
+          employees: emps,
+          results: emps})
       })
       .catch(err => console.log(err));
   }
   inputHandler = event => {
-    this.setState({ search: event.target.value });
+    const results = this.state.employees.filter(({ name, email, location }) => {
+      const query = event.target.value.trim().split(',').join('').toLowerCase();
+      // having last, first, then last makes it so the search will pick it up regardless of what order the user types the names in
+      const fields = [name.last, name.first, name.last, email, location.city, location.state, location.country]; 
+      const searchable = fields.join(' ').toLowerCase();
+      return searchable.includes(query);
+    });
+    this.setState({ 
+      search: event.target.value,
+      results: results
+    });
   }
   clearInput = event => {
     this.setState({ search: "" });
-  }
-  filterResults = search => {
-
   }
 
   render() {
@@ -38,7 +48,9 @@ class App extends Component {
           search={this.state.search}
           clearInput={this.clearInput}  
         />
-        <EmployeeList employees={this.state.employees}/>
+        <EmployeeList 
+          employees={this.state.results}
+        />
       </div>
     )
   }
