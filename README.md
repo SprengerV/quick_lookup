@@ -53,6 +53,8 @@ This app is a quick lookup user directory built with React. Searching filters us
 
 The app runs in the browser, and can be found at the following link:
 
+[https://sprengerv.github.io/quick_lookup/](https://sprengerv.github.io/quick_lookup/)
+
 
 
 <!-- USAGE EXAMPLES -->
@@ -65,7 +67,10 @@ This app is for anyone looking to search a user list. It could easily be adapted
 <!-- TESTING -->
 ## Testing
 
-For testing this project, please see the reactREAMDE.
+For testing this project, please see the [reactREADME](https://github.com/SprengerV/quick_lookup/blob/main/reactREADME.md).
+
+
+![Quick Lookup Screenshot](img/quick_lookup-420.jpg) ![Quick Lookup Mobile Screenshot](img/quick_lookup-mobile.jpg)
 
 
 
