@@ -11,32 +11,46 @@ class EmployeeList extends Component {
     componentDidMount() {
         this.setState({ sorted: this.props.employees });
     }
-    nameSortHandler = () => {
-        const emps = this.props.employees;
+    componentDidUpdate(prevProps) {
+        if (prevProps.employees !== this.props.employees) {
+            
+            this.nameSort()
+        }
+    }
+    nameSortSwitch = async () => {
         switch (this.state.nameSort) {
             case "asc": 
+                await this.setState({ nameSort: "desc" });
+                break;
+            case "desc":
+                await this.setState({ nameSort: "asc" });
+                break;
+            default:
+                await this.setState({ nameSort: "asc" });
+        }
+        this.nameSort();
+    }
+    nameSort = () => {
+        const emps = this.props.employees;
+        switch(this.state.nameSort) {
+            case "asc":
                 this.setState({
-                    nameSort: "desc",
-                    sorted: emps.sort((a, b) => b.name.last.localeCompare(a.name.last, 'en', { 'sensitivity': 'base' }))
+                    sorted: emps.sort((a, b) => a.name.last.localeCompare(b.name.last, 'en', { 'sensitivity': 'base' }))
                 });
                 break;
             case "desc":
                 this.setState({
-                    nameSort: "asc",
-                    sorted: emps.sort((a, b) => a.name.last.localeCompare(b.name.last, 'en', { 'sensitivity': 'base' }))
+                    sorted: emps.sort((a, b) => b.name.last.localeCompare(a.name.last, 'en', { 'sensitivity': 'base' }))
                 });
                 break;
             default:
-                this.setState({
-                    nameSort: "asc",
-                    sorted: emps.sort((a, b) => a.name.last.localeCompare(b.name.last, 'en', { 'sensitivity': 'base' }))
-                });
+                this.setState({ sorted: emps });
         }
     }
     render() {
         return(
             <div>
-                <ListHeader nameSort={this.state.nameSort} nameSortHandler={this.nameSortHandler}/>
+                <ListHeader nameSort={this.state.nameSort} nameSortHandler={this.nameSortSwitch}/>
                 {this.state.sorted.map((employee, i) => (
                     <Employee key={i} index={i} data={employee}/>
                 ))}
